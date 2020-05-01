@@ -11,6 +11,8 @@ Now click Load and type password.json.  It should now have 2 lines in the array,
 
 Now click and load widget.json.  The array should have multiple lines, and if you click input, it will dynamically create a dialog to interact with a form that has many different widgets.
 
+Edit the array and click Save to create more .json files
+
 TODO
 
 * Add screenshots to this README so its purpose is clear
