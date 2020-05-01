@@ -1,0 +1,31 @@
+
+
+TOOLBAR 
+ITEM load (TEXT="Open", IMAGE="fa-folder-open")
+ITEM save (TEXT="Save", IMAGE="fa-save")
+ITEM seperator
+ITEM append (TEXT="Append", IMAGE="fa-plus-square")
+ITEM duplicate (TEXT="Duplicate", IMAGE="fa-copy")
+ITEM clear (TEXT="Clear", IMAGE="fa-trash")
+END
+LAYOUT (TEXT="Kitchen Sink")
+TABLE (HEIGHT= 10 LINES)
+{
+[b00|b01|f00             |f01       |f02        |f02b      |f03       |f04   |f05                                  |f06      ]
+}
+END
+END
+ATTRIBUTES
+IMAGE b00 = formonly.insert, ACTION=insert, TITLE="Insert";
+IMAGE b01 = formonly.delete, ACTION=delete, TITLE="Delete";
+EDIT f00 = formonly.LABEL, SCROLL, TITLE="Label";
+EDIT f01 = formonly.name, TITLE="Name";
+COMBOBOX f02 = formonly.datatype, TITLE="Datatype", INITIALIZER=combo_populate_datatype;
+EDIT f02b = formonly.PRECISION, TITLE="Precision", SCROLL;
+COMBOBOX f03 = formonly.widget, TITLE="Widget", INITIALIZER=combo_populate_widget;
+SPINEDIT f04 = formonly.SIZE, TITLE="Size";
+BUTTONEDIT f05 = formonly.ATTRIBUTES, TITLE="Attributes",SCROLL;
+EDIT f06 = formonly.value, TITLE="Value",SCROLL;
+
+INSTRUCTIONS
+SCREEN RECORD scr(insert, delete, LABEL, name, datatype, PRECISION, widget, size, ATTRIBUTES, value);
