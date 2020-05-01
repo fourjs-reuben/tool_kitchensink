@@ -26,4 +26,5 @@ TODO
 * Provide a style editor as well
 * Consider moving .json files to client and/or provide a window to list available entries
 * Implement a DISPLAY ARRAY
+* create a wizard for the attributes field
 
