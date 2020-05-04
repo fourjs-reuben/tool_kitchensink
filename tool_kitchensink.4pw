@@ -73,6 +73,7 @@
       </VirtualFolder>
       <File filePath="tool_kitchensink.4gl"/>
       <File filePath="tool_kitchensink.per"/>
+      <File filePath="viewform.per"/>
     </Application>
   </Group>
 </Project>

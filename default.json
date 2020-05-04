@@ -1,1 +1,1 @@
-[{"insert":"fa-plus","delete":"fa-minus","label":"Field 1","name":"field1","datatype":"STRING","widget":"EDIT","size":10}]
+[{"insert":"fa-plus","delete":"fa-minus","label":"Field 1","name":"field1","datatype":"STRING","widget":"EDIT","size":10,"hbox":true}]

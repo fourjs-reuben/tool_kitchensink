@@ -11,7 +11,7 @@ END
 LAYOUT (TEXT="Kitchen Sink")
 TABLE (HEIGHT= 10 LINES)
 {
-[b00|b01|f00             |f01       |f02        |f02b      |f03       |f04   |f05                                  |f06      ]
+[b00|b01|f00             |f01       |f02        |f02b      |f03       |f04   |f04b  |f04c|f05                                  |f06      ]
 }
 END
 END
@@ -24,8 +24,10 @@ COMBOBOX f02 = formonly.datatype, TITLE="Datatype", INITIALIZER=combo_populate_d
 EDIT f02b = formonly.PRECISION, TITLE="Precision", SCROLL;
 COMBOBOX f03 = formonly.widget, TITLE="Widget", INITIALIZER=combo_populate_widget;
 SPINEDIT f04 = formonly.SIZE, TITLE="Size";
+SPINEDIT f04b = formonly.HEIGHT, TITLE="Height";
+CHECKBOX f04c = formonly.HBOX, TITLE="HBox", VALUECHECKED=TRUE, VALUEUNCHECKED=FALSE, NOT NULL;
 BUTTONEDIT f05 = formonly.ATTRIBUTES, TITLE="Attributes",SCROLL;
 EDIT f06 = formonly.value, TITLE="Value",SCROLL;
 
 INSTRUCTIONS
-SCREEN RECORD scr(insert, delete, LABEL, name, datatype, PRECISION, widget, size, ATTRIBUTES, value);
+SCREEN RECORD scr(insert, delete, LABEL, name, datatype, PRECISION, widget, size, HEIGHT, HBOX, ATTRIBUTES, value);

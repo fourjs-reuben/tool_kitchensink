@@ -10,6 +10,8 @@ DEFINE arr DYNAMIC ARRAY OF RECORD
     precision STRING,
     widget STRING,
     size SMALLINT,
+    height SMALLINT,
+    hbox BOOLEAN,
     attributes STRING,
     value STRING
 END RECORD
@@ -36,6 +38,11 @@ DEFINE t TEXT
         BEFORE INSERT
             LET arr[arr_curr()].insert = INSERT_INLINE_IMAGE 
             LET arr[arr_curr()].delete = DELETE_INLINE_IMAGE
+            LET arr[arr_curr()].datatype = "STRING"
+            LET arr[arr_curr()].widget = "EDIT"
+            LET arr[arr_curr()].size = 10
+            LET arr[arr_curr()].height = 1
+            LET arr[arr_curr()].hbox = TRUE
         ON ACTION input
             CALL go("input")
 
@@ -78,7 +85,7 @@ DEFINE temp_filename STRING
 DEFINE result INTEGER
 DEFINE ch base.Channel
 DEFINE i,j INTEGER
-DEFINE spaces base.StringBuffer
+DEFINE spaces, value_string  base.StringBuffer
 
 DEFINE names DYNAMIC ARRAY OF RECORD
     name STRING, datatype STRING
@@ -98,7 +105,14 @@ DEFINE t TEXT
         FOR j = 4 TO arr[i].size
             CALL spaces.append(" ")
         END FOR
-        CALL ch.writeLine(SFMT("[l%1          ][f%1%2: ]", i USING "&&", spaces.toString()))
+        IF arr[i].hbox THEN
+            CALL ch.writeLine(SFMT("[l%1          ][f%1%2:                       ]", i USING "&&", spaces.toString()))
+        ELSE
+            CALL ch.writeLine(SFMT("[l%1          ][f%1%2]", i USING "&&", spaces.toString()))
+            FOR j = 2 TO arr[i].height
+                CALL ch.writeLine(SFMT("               [   %2]", i USING "&&", spaces.toString()))
+            END FOR
+        END IF
     END FOR
     CALL ch.writeLine("}")
     CALL ch.writeLine("END #GRID")
@@ -112,8 +126,16 @@ DEFINE t TEXT
     CALL ch.close()
 
     IF dialog_type = "viewform" THEN
+        OPEN WINDOW v WITH FORM "viewform" ATTRIBUTES(TEXT=temp_filename,STYLE="dialog")
         LOCATE t IN FILE SFMT("%1.per", temp_filename)
-        CALL FGL_WINMESSAGE("View Form ",t,"info")
+        DISPLAY t TO per
+        MENU ""
+            ON ACTION accept
+                EXIT MENU
+            ON ACTION close
+                EXIT MENU
+        END MENU
+        CLOSE WINDOW v
         RETURN
     END IF
 
@@ -172,6 +194,7 @@ DEFINE t TEXT
                 IF d.validate("formonly.*") = 0 THEN
                     EXIT WHILE
                 END IF
+                
             WHEN ev = "ON ACTION cancel"
                 EXIT WHILE
                 
@@ -179,6 +202,16 @@ DEFINE t TEXT
                 EXIT WHILE
         END CASE
     END WHILE
+    IF int_flag = 0 THEN
+        LET value_string = base.StringBuffer.create()
+        FOR i = 1 TO arr.getLength()
+            IF i > 1 THEN
+                CALL value_string.append("\n")
+            END IF
+            CALL value_string.append(SFMT("%1:=%2", arr[i].name, IIF(dialog_type="construct", d.getQueryFromField(arr[i].name), d.getFieldValue(arr[i].name))))
+        END FOR
+        CALL FGL_WINMESSAGE("Values Entered",value_string.toString(),"info")
+    END IF
     LET int_flag = 0
     CALL d.close()
     CLOSE WINDOW w2
