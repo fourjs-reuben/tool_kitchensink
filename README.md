@@ -17,12 +17,9 @@ TODO
 
 * Add screenshots to this README so its purpose is clear
 * Tidyup text of action buttons
-* Implement a screen to display entered values
-* Add a HEIGHT attribute for use with TEXTEDITS, IMAGE etc
-* Add a means to align widgets in grid
-* Add a proper screen to display generated .per
+
 * Lots of testing for various widgets, datatypes
-* Create more default .json files, one fior each widget type
+* Create more default .json files, one for each widget type
 * Provide a style editor as well
 * Consider moving .json files to client and/or provide a window to list available entries
 * Implement a DISPLAY ARRAY
