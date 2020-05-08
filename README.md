@@ -13,11 +13,15 @@ Now click and load widget.json.  The array should have multiple lines, and if yo
 
 Edit the array and click Save to create more .json files
 
+![Screen Shot 2020-05-08 at 16 51 03](https://user-images.githubusercontent.com/13615993/81371505-25722100-914c-11ea-9c1d-d27c1738b063.png)
+
+![Screen Shot 2020-05-08 at 16 49 16](https://user-images.githubusercontent.com/13615993/81371514-2c992f00-914c-11ea-96a8-9da9a4e00e3c.png)
+
+
+
 TODO
 
-* Add screenshots to this README so its purpose is clear
 * Tidyup text of action buttons
-
 * Lots of testing for various widgets, datatypes
 * Create more default .json files, one for each widget type
 * Provide a style editor as well
