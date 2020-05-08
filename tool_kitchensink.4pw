@@ -67,7 +67,9 @@
   <Group id="75644415" label="tool_kitchensink" language="Genero">
     <Application binaryName="tool_kitchensink" id="1812200440" label="tool_kitchensink" targetDirectory="$(ProjectDir)">
       <VirtualFolder label="saves">
+        <File filePath="combobox_items.json"/>
         <File filePath="default.json"/>
+        <File filePath="edit_sample.json"/>
         <File filePath="password.json"/>
         <File filePath="widget.json"/>
       </VirtualFolder>
