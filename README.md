@@ -29,3 +29,5 @@ TODO
 * Implement a DISPLAY ARRAY
 * create a wizard for the attributes field
 
+* (Change to update language)
+
